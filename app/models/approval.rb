@@ -1,5 +1,9 @@
 class Approval
   include Mongoid::Document
-  field :approved, type: Mongoid::Boolean
-  field :denied, type: Mongoid::Boolean
+
+  belongs_to :user
+  belongs_to :step
+
+  field :approved, type: Boolean, default: false
+  field :denied, type: Boolean, default: false
 end
