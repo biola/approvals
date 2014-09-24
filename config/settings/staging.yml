@@ -1,0 +1,13 @@
+app:
+  name: Approvals
+  scheme: https
+  host: apps.staging.biola.edu
+  relative_url_root: /approvals
+  full_url: http://apps.staging.biola.edu/approvals
+
+redis:
+  url: "redis://redis1.staging.biola.edu:6379/0"
+
+roz:
+  api_base_url: http://api.staging.biola.edu/assets/
+  files_base_url: http://assets.staging.biola.edu/

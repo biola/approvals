@@ -1,0 +1,23 @@
+.container
+  h2 Approvals
+
+
+  .text-right
+    = link_to 'New Approval', new_approval_path, class: 'btn btn-default'
+  br
+
+  table.table
+    tr
+      th Title
+      th Date
+      th Approvals
+      th Denials
+      th Still Needed
+
+    - @approvals.each do |approval|
+      tr
+        td = link_to approval, approval
+        td = approval.created_at.to_s(:long)
+        td = approval.approval_count
+        td = approval.denial_count
+        td = approval.outstanding_count

@@ -1,0 +1,47 @@
+doctype html
+html lang="en-us"
+  head
+    / handles default html head tags and csrf_meta_tags
+    = render 'frontend_toolkit/head', title: 'Approvals, Biola University'
+    = stylesheet_link_tag "application", media: "all"
+    = yield :extra_headers
+
+  body class="#{controller_name} #{action_name}"
+    = render 'frontend_toolkit/header', current_user: current_user
+
+    #body
+      #wrapperBiolaSubHeader
+        #biolaSubHeader
+          .overflow_wrapper
+            .container
+              ul.nav-list.nav-main
+
+      .container
+        - unless (alerts = all_alerts).empty?
+          #message_list
+            - alerts.each do |msg|
+              div.alert class=alert_class(msg[:type]) data-type=msg[:type]
+                a.close data-dismiss="alert" href="#" &times;
+                i> class=alert_icon(msg[:type])
+                = msg[:message]
+
+      / - if current_user != true_user
+      /   .container
+      /     .alert.alert-warning
+      /       .pull-right#{link_to("Back to admin", stop_impersonating_users_path)}
+      /       | You #{true_user.name} are signed in as #{current_user.name}
+
+      br
+      = yield
+
+    .container
+      .footer
+
+        p ♥ from the Biola Apps team
+
+
+
+
+
+    = javascript_include_tag "application"
+    = yield :extra_javascript

@@ -1,0 +1,6 @@
+redis:
+  url: "redis://redis1.prod.biola.edu:6379/0"
+
+roz:
+  api_base_url: 'https://api.biola.edu/assets/'
+  files_base_url: 'https://assets.biola.edu/'

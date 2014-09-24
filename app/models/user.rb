@@ -1,6 +1,9 @@
 class User
   include Mongoid::Document
 
+  has_many :approvals
+  has_many :comments
+
   field :username, type: String
   field :first_name, type: String
   field :last_name, type: String
@@ -58,7 +61,7 @@ class User
   # See http://en.wikipedia.org/wiki/Uniform_Resource_Name
   def relevant_entitlements
     urns = Array(entitlements)
-    nids = BuwebContentModels.config.urn_namespaces
+    nids = Settings.urn_namespaces
 
     return [] if urns.blank?
 
@@ -73,7 +76,7 @@ class User
   end
 
   def self.role_to_entitlement(role)
-    BuwebContentModels.config.urn_namespaces.map do |namespace|
+    Settings.urn_namespaces.map do |namespace|
       "#{namespace}#{role}"
     end
   end

@@ -1,0 +1,16 @@
+@import 'settings';
+
+// Alerts
+.alert { margin: 10px 0; }
+
+
+// Buttons
+.btn-biola { color: white; background-color: $biola-red; border-color: #B60216;
+  &:hover  { color: white; background-color: #B60216; border-color: #A00516; }
+}
+
+
+// Labels
+.label.text-top { vertical-align: text-top; }
+
+

@@ -1,0 +1,7 @@
+target :'ruby1.staging', 'johnd0@ruby1.staging.biola.edu:/srv/rack/approvals', rails_env: 'staging'
+target :'ruby1.prod',    'johnd0@ruby1.prod.biola.edu:/srv/rack/approvals',    rails_env: 'production'
+target :'ruby2.prod',    'johnd0@ruby2.prod.biola.edu:/srv/rack/approvals',    rails_env: 'production'
+
+env_scripts '/etc/profile'
+
+rake :post_deploy

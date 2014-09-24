@@ -1,0 +1,89 @@
+//
+//  The frontend toolkit includes bootstrap and fontawesome
+//= require biola-frontend-toolkit
+//
+//= require_tree ./resources
+//= require_self
+//
+
+
+@import 'settings';
+
+html, body { min-height: 100%; background-color: white; }
+#header { }  // Should use shared biola header.css
+
+ul.ui-autocomplete {
+    z-index: 1100 !important;
+}
+
+#wrapperBiolaSubHeader { background-color: #f3f3f3; }
+#biolaSubHeader { border-bottom: 1px solid #ddd; overflow-x: auto;
+  .overflow_wrapper { padding: 0; }
+  .nav-main { font-size: 1.35em; font-weight: bold; clear: left;  display: block; list-style: none; margin: 0; padding: 0; font-family: 'proxima-nova',Helvetica,Arial,sans-serif; white-space: nowrap; }
+  .nav-main li { display: inline-block; position: relative; margin-top: 0px; margin-left: 1.3em; padding: 15px 5px; }
+  .nav-main li:first-child { margin-left: 0; }
+  .nav-main li:last-child { margin-right: 1.3em }
+  .nav-main li a { color: #333; border: 0 solid #3E4A66; text-decoration: none; font-weight: 300; }
+  .nav-main li.active { border-bottom: 2px solid #CA4242; }
+  .nav-main li.active > a { border-bottom-width: 0; font-weight: 500 }
+}
+
+#body { padding-bottom: 40px;
+  .page-header { margin-top: 0; }
+  h1.title, h2.title, h3.title { margin-top: 0; }
+  .container.page { margin: 30px auto; }
+  .panel { margin-bottom: 30px; }
+
+  .side-menu {
+    a.list-group-item { background-color: #fafafa; color: #428bca; text-shadow: 0 1px 0 #fff;
+      &:hover { background-color: #fdfdfe; color: #428bca; }
+      i.fa { padding-right: 5px; }
+    }
+    .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+      // Overwrite bootstrap
+      color: black; background-color: white; border-color: #dddddd;
+      // new
+      border-left-color: #CA4242; border-left-width: 2px; font-weight: 500;
+    }
+    .subitems {
+      a.list-group-item { padding-left: 30px; background-color: #fdfdfe;
+        &.active { border-left-color: #428bca; }
+      }
+    }
+
+    .list-group-item.top-item { background-color: #f3f3f3; font-weight: bold; line-height: 25px;
+      .img-wrapper { width: 25px; height: 25px; background-position: center; background-size: cover; border-radius: 3px; float: left; margin-right: 10px; }
+    }
+
+    // Overwrite bootstrap
+    .list-group .list-group-item:first-child { border-top-right-radius: 0px; border-top-left-radius: 0px; }
+    .list-group .list-group-item:last-child { margin-bottom: -1px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; }
+    // new
+    .list-group > .list-group-item:first-child { border-top-right-radius: 4px; border-top-left-radius: 4px; }
+    .list-group > .list-group-item:last-child { margin-bottom: 0px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; }
+  }
+}
+.footer { border-top: 1px solid #ddd; margin: 20px 0 0; padding: 20px; text-align: center; color: #888; }
+
+
+////    Misc CSS helpers
+.pad-right { padding-right: 5px; }
+
+
+////    Jquery Autocomplete
+  form .people_search { margin: 0 5px 0 0; width: 300px !important;}
+  // form .ui-helper-hidden-accessible { display: none; }
+  ul.ui-autocomplete { width: 220px; background: white; border: 1px solid #ddd; list-style: none;
+    li {
+      &:hover, .ui-state-hover { background-color: #ECF6FD; }
+      a { padding: 4px; display: block; height: 100%; text-decoration: none; color: inherit; cursor: pointer;
+      }
+      img { width: 40px; margin-right: 10px; }
+      .person_details { vertical-align: middle; display: inline-block; max-width: 160px;
+        .department { line-height: 10px; font-size: 11px; display: block; }
+        .affiliation { color: #999; line-height: 10px; font-size: 11px; display: block; }
+      }
+    }
+  }
+
+.redactor_box { border: 1px solid #cccccc !important; }

@@ -1,3 +1,2 @@
-# Be sure to restart your server when you modify this file.
-
-Rails.application.config.session_store :cookie_store, key: '_approvals_session'
+require 'rack-cas/session_store/rails/mongoid'
+Approvals::Application.config.session_store :rack_cas_mongoid_store, key: '_approvals_session'

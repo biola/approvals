@@ -1,0 +1,32 @@
+.container
+  h2 New Approval
+  hr
+
+  = form_for @approval do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+
+    .form-group
+      = f.label :description
+      = f.text_area :description, class: 'form-control'
+
+
+    .form-group
+      = f.label :attachment
+      = f.file_field :attachment
+      = f.hidden_field :attachment_cache
+
+    hr
+
+    .form-group
+      = f.label :set_approver_emails, 'Approver Emails'
+      span.text-muted< = "[comma-seperated]"
+      = f.text_area :set_approver_emails, class: 'form-control'
+
+
+    hr
+    .form-footer
+      .pull-right
+        = f.submit 'Save', class: 'btn btn-biola'
+        = link_to 'Cancel', :back, class: 'btn btn-link'
