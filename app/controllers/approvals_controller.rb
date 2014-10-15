@@ -39,7 +39,9 @@ class ApprovalsController < ApplicationController
   end
 
   def approval_params
-    params.require(:approval).permit([:title, :description, :attachment, :set_approver_emails])
+    params.require(:approval).permit([:title, :description, :attachment, :set_approver_emails]).merge({
+      user_id: current_user.id
+    })
   end
 
   def set_approval

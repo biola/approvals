@@ -26,6 +26,7 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit([:text]).merge({
+      user_id: current_user.id,
       name: current_user.name,
       email: current_user.email,
       photo_url: current_user.photo_url,

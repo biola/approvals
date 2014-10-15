@@ -2,6 +2,7 @@ class Comment
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  belongs_to :user
   embedded_in :approval
 
   field :name, type: String

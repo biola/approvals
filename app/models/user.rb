@@ -2,7 +2,7 @@ class User
   include Mongoid::Document
 
   has_many :approvals
-  has_many :comments
+  # has_many :comments
 
   field :username, type: String
   field :first_name, type: String

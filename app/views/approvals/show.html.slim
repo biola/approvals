@@ -60,7 +60,7 @@
           = f.button "#{fa_icon("thumbs-up")} Approve".html_safe, value: 'approve', class: "btn btn-success"
         - unless (@approval.denied_emails & [current_user.email]).present?
           = f.button "#{fa_icon("thumbs-down")} Deny".html_safe, value: 'deny', class: "btn btn-danger"
-      = f.button "Just leave comment".html_safe, value: 'comment', class: "btn btn-default"
+      = f.button "Leave a comment".html_safe, value: 'comment', class: "btn btn-default"
 
   .comments
     - @approval.comments.desc(:created_at).each do |comment|
