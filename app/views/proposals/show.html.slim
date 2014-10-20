@@ -1,0 +1,69 @@
+.container
+  .pull-right
+    = link_to fa_icon('edit', text: 'Edit'), edit_proposal_path(@proposal), class: 'btn btn-default'
+  h1 = @proposal.title
+
+  p = @proposal.description
+
+
+  - if @proposal.attachment.present?
+    br
+    h4 Attached Files
+    ul
+      li = link_to @proposal.attachment.url.match(/[^\/]+$/), @proposal.attachment.url, target: '_blank'
+
+  br
+  hr
+
+  .row.status_boxes
+    .col-sm-4
+      .status.approved
+        h4.title Approvals
+        .text
+          .number = @proposal.approval_count
+          .emails
+            - @proposal.approved_emails.each do |ae|
+              .email = ae
+
+    .col-sm-4
+      .status.outstanding
+        h4.title Undecided
+        .text
+          .number = @proposal.outstanding_count
+          .emails
+            - @proposal.outstanding_approvals.each do |op|
+              .email = op
+
+    .col-sm-4
+      .status.denied
+        h4.title Denials
+        .text
+          .number = @proposal.denial_count
+          .emails
+            - @proposal.denied_emails.each do |de|
+              .email = de
+
+
+  - if @approval.present? && @approval.approved == nil
+    .modal.fade#approvals-modal data-remote=decide_proposal_approval_path(@proposal, @approval) tabindex="-1" role="dialog" aria-labelledby="decide" aria-hidden="true"
+      .modal-dialog
+        .modal-content
+    .form-group
+      button.btn.btn-info.form-control data-toggle="modal" data-target="#approvals-modal" type="button" Make a Decision
+  = form_for [@proposal, Comment.new] do |f|
+    h4 Leave a comment
+    .form-group
+      = f.text_field :text, class: 'form-control', placeholder: 'Comment'
+      br
+      = f.button "Leave a comment".html_safe, value: 'comment', class: "btn btn-default"
+
+  .comments
+    - @proposal.comments.desc(:created_at).each do |comment|
+      .comment
+        .img style="background-image: url(#{comment.photo_url})"
+        .meta
+          .name = comment.name
+          .date = comment.created_at.to_s(:long)
+        .text = comment.text
+        .clearfix
+

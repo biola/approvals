@@ -2,7 +2,7 @@ app:
   name: Approvals
   scheme: https
   host: apps.biola.edu
-  relative_url_root: /approvals
+  relative_url_root: /proposals
 
 # Overwrite this in production
 secret_token: '972c4ff1631517bd8e48ce89e331affd2b7d5e59dd955ea071573d29caa229b13bc6d9115c866bd4a926c7fe59f4f0ea179f16b35a0ad468937ea381bf174d4f'

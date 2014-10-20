@@ -1,4 +1,4 @@
-class ApprovalPolicy < ApplicationPolicy
+class ProposalPolicy < ApplicationPolicy
   class Scope < Struct.new(:user, :scope)
     def resolve
       if user.admin?
@@ -16,8 +16,7 @@ class ApprovalPolicy < ApplicationPolicy
   end
 
   def show?
-    true
-    # scope.where(:id => record.id).exists?
+    scope.where(:id => record.id).exists?
   end
 
   def create?
@@ -39,5 +38,5 @@ class ApprovalPolicy < ApplicationPolicy
   def destroy?
     show?
   end
+  alias :decide? :create?
 end
-

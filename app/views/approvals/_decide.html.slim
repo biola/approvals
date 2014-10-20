@@ -1,0 +1,29 @@
+= form_for [@proposal, @approval] do |f|
+  .modal-header
+    button.close type="button" data-dismiss="modal" aria-hidden="true"  &times;
+    h4.modal-title Proposal Decision
+    label.text-muted Note: All decisions are final.
+
+  .modal-body
+    .form-section
+      .btn-group data-toggle="buttons"
+        => f.radio_button :approved, true
+        = f.label "I approve this proposal."
+      .form-group
+        => f.radio_button :approved, false
+        = f.label "I reject this proposal."
+
+    .btn-group data-toggle="buttons"
+      label.btn.btn-primary.active
+        input#option1 checked="" name="options" type="radio"
+          | I approve this proposal.
+      label.btn.btn-primary
+        input#option2 name="options" type="radio"
+          | I reject this proposal.
+
+  .modal-footer
+    button.btn.btn-default type="button" data-dismiss="modal" Cancel
+    = f.submit 'Submit', class: 'btn btn-primary'
+
+
+

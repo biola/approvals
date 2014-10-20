@@ -1,0 +1,23 @@
+.container
+  h2 Proposals
+
+
+  .text-right
+    = link_to 'New Proposal', new_proposal_path, class: 'btn btn-default'
+  br
+
+  table.table
+    tr
+      th Title
+      th Date
+      th Approvals
+      th Denials
+      th Still Needed
+
+    - @proposals.each do |proposal|
+      tr
+        td = link_to proposal, proposal
+        td = proposal.created_at.to_s(:long_ordinal)
+        td = proposal.approval_count
+        td = proposal.denial_count
+        td = proposal.outstanding_count

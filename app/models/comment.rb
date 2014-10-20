@@ -3,13 +3,13 @@ class Comment
   include Mongoid::Timestamps
 
   belongs_to :user
-  embedded_in :approval
+  embedded_in :proposal
 
   field :name, type: String
   field :email, type: String
   field :text, type: String
   field :photo_url, type: String
-  field :approved, type: Boolean, default: false
-  field :denied, type: Boolean, default: false
+
+  validates_presence_of :text
 
 end

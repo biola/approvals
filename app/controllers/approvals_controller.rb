@@ -1,54 +1,45 @@
 class ApprovalsController < ApplicationController
 
-  before_filter :set_approval, only: [:show, :edit, :update]
   before_filter :new_approval_from_params, only: [:new, :create]
-  before_filter :pundit_authorize
-
-  def index
-    @approvals = policy_scope(Approval)
-  end
-
-  def show
-  end
-
-  def new
-  end
+  before_filter :set_proposal
+  before_filter :set_approval
 
   def create
+  end
+
+  def update
+    authorize (@approval || Approval)
+
+    @approval.attributes = approval_params
+
     if @approval.save
-      flash[:info] = "Approval was successfully created."
-      redirect_to @approval
+      flash[:info] = "Your decision has been successfully recorded."
     else
-      render :new
+      flash[:warning] = "Something went wrong. Please try again."
     end
+
+    redirect_to @proposal
   end
 
-  def add_comment
-
+  def decide
+    render partial: 'decide'
   end
-
 
   protected
+  def set_approval
+    @approval = @proposal.approvals.find(params[:id]) if params[:id]
+  end
 
-  def new_approval_from_params
-    if params[:approval]
-      @approval = Approval.new(approval_params)
-    else
-      @approval = Approval.new
-    end
+  def set_proposal
+    @proposal = Proposal.find(params[:proposal_id]) if params[:proposal_id]
   end
 
   def approval_params
-    params.require(:approval).permit([:title, :description, :attachment, :set_approver_emails]).merge({
-      user_id: current_user.id
+    params.require(:approval).permit([:approved, :text]).merge({
+      user_id: current_user.id.to_s,
+      name: current_user.name,
+      email: current_user.email,
+      photo_url: current_user.photo_url
     })
-  end
-
-  def set_approval
-    @approval = Approval.find(params[:id]) if params[:id]
-  end
-
-  def pundit_authorize
-    authorize (@approval || Approval)
   end
 end
