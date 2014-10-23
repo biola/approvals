@@ -47,3 +47,8 @@ form#new_comment { border: 1px solid #ddd; padding: 20px; border-radius: 4px;
     .btn { margin-right: 5px; }
   }
 }
+
+img#thumb {
+  max-width: 300px;
+  max-height: 300px;
+}

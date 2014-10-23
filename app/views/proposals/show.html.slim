@@ -8,9 +8,12 @@
 
   - if @proposal.attachment.present?
     br
-    h4 Attached Files
-    ul
-      li = link_to @proposal.attachment.url.match(/[^\/]+$/), @proposal.attachment.url, target: '_blank'
+    h4 Attached File
+    - if ['img', 'jpeg', 'png'].include? @proposal.attachment.content_type.split('/').last
+      img#thumb src=@proposal.attachment.url
+      br
+    = link_to @proposal.attachment.url.match(/[^\/]+$/), @proposal.attachment.url, target: '_blank'
+
 
   br
   hr
@@ -44,18 +47,18 @@
               .email = de
 
 
-  - if @approval.present? && @approval.approved == nil
-    .modal.fade#approvals-modal data-remote=decide_proposal_approval_path(@proposal, @approval) tabindex="-1" role="dialog" aria-labelledby="decide" aria-hidden="true"
-      .modal-dialog
-        .modal-content
-    .form-group
-      button.btn.btn-info.form-control data-toggle="modal" data-target="#approvals-modal" type="button" Make a Decision
+  .modal.fade#approvals-modal data-remote=decide_proposal_approval_path(@proposal, @approval) tabindex="-1" role="dialog" aria-labelledby="decide" aria-hidden="true"
+    .modal-dialog
+      .modal-content
   = form_for [@proposal, Comment.new] do |f|
-    h4 Leave a comment
+    h4 Give Feedback
     .form-group
       = f.text_field :text, class: 'form-control', placeholder: 'Comment'
       br
-      = f.button "Leave a comment".html_safe, value: 'comment', class: "btn btn-default"
+      => f.button "Post comment".html_safe, value: 'comment', class: "btn btn-default"
+      - if @approval.present? && @approval.approved == nil
+        span> = "- or -"
+        button.btn.btn-default data-toggle="modal" data-target="#approvals-modal" type="button" Make a decision
 
   .comments
     - @proposal.comments.desc(:created_at).each do |comment|
