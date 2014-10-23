@@ -5,24 +5,20 @@
     label.text-muted Note: All decisions are final.
 
   .modal-body
+    label Proposal:
+    blockquote
+      p = @proposal.title
     .form-section
-      .btn-group data-toggle="buttons"
-        => f.radio_button :approved, true
-        = f.label "I approve this proposal."
-      .form-group
-        => f.radio_button :approved, false
-        = f.label "I reject this proposal."
-
-    .btn-group data-toggle="buttons"
-      label.btn.btn-primary.active
-        input#option1 checked="" name="options" type="radio"
-          | I approve this proposal.
-      label.btn.btn-primary
-        input#option2 name="options" type="radio"
-          | I reject this proposal.
+      .btn-group.center data-toggle="buttons"
+        button.btn.btn-primary
+          => f.radio_button :approved, true
+          | Approve
+        button.btn.btn-default
+          => f.radio_button :approved, false
+          | Reject
 
   .modal-footer
-    button.btn.btn-default type="button" data-dismiss="modal" Cancel
+    / button.btn.btn-default type="button" data-dismiss="modal" Cancel
     = f.submit 'Submit', class: 'btn btn-primary'
 
 

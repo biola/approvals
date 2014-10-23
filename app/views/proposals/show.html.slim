@@ -55,10 +55,10 @@
     .form-group
       = f.text_field :text, class: 'form-control', placeholder: 'Comment'
       br
-      => f.button "Post comment".html_safe, value: 'comment', class: "btn btn-default"
+      => f.button "Post comment".html_safe, value: 'comment', class: "btn btn-primary"
       - if @approval.present? && @approval.approved == nil
         span> = "- or -"
-        button.btn.btn-default data-toggle="modal" data-target="#approvals-modal" type="button" Make a decision
+        button.btn.btn-primary data-toggle="modal" data-target="#approvals-modal" type="button" Make a decision
 
   .comments
     - @proposal.comments.desc(:created_at).each do |comment|
