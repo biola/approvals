@@ -1,6 +1,7 @@
 .container
-  .pull-right
-    = link_to fa_icon('edit', text: 'Edit'), edit_proposal_path(@proposal), class: 'btn btn-default'
+  - if current_user.id == @proposal.user_id
+    .pull-right
+      = link_to fa_icon('edit', text: 'Edit'), edit_proposal_path(@proposal), class: 'btn btn-default'
   h1 = @proposal.title
 
   p = @proposal.description

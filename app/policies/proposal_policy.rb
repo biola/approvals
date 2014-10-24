@@ -28,12 +28,10 @@ class ProposalPolicy < ApplicationPolicy
   end
 
   def update?
-    show?
+    record.user_id == user.id
   end
 
-  def edit?
-    update?
-  end
+  alias :edit? :update?
 
   def destroy?
     show?
