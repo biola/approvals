@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :proposals do
+  resources :proposals, path: '' do
     resources :comments
     resources :approvals do
       get :decide, on: :member
