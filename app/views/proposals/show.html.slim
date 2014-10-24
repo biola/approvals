@@ -47,9 +47,10 @@
               .email = de
 
 
-  .modal.fade#approvals-modal data-remote=decide_proposal_approval_path(@proposal, @approval) tabindex="-1" role="dialog" aria-labelledby="decide" aria-hidden="true"
-    .modal-dialog
-      .modal-content
+  - if @approval.present?
+    .modal.fade#approvals-modal data-remote=decide_proposal_approval_path(@proposal, @approval) tabindex="-1" role="dialog" aria-labelledby="decide" aria-hidden="true"
+      .modal-dialog
+        .modal-content
   = form_for [@proposal, Comment.new] do |f|
     h4 Give Feedback
     .form-group
