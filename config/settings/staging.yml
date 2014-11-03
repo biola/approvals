@@ -2,8 +2,8 @@ app:
   name: Approvals
   scheme: https
   host: apps.staging.biola.edu
-  relative_url_root: /proposals
-  full_url: http://apps.staging.biola.edu/proposals
+  relative_url_root: /approvals
+  full_url: http://apps.staging.biola.edu/approvals
 
 redis:
   url: "redis://redis1.staging.biola.edu:6379/0"
