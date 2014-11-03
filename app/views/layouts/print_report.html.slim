@@ -1,0 +1,23 @@
+/ doctype html
+/ html lang="en-us"
+/   head
+/     title = yield_or(:title, 'Chapel Manager')
+/     meta charset="utf-8"
+/     link rel="icon" type="image/png" href="https://media1.biola.edu/biola/img/biola-icon.png"
+/     meta name="viewport" content="width=device-width, initial-scale=1.0"
+/     = csrf_meta_tag
+
+/     = stylesheet_link_tag 'print_report', media: 'all'
+
+/   body.print_report
+/     #header_bar.no_print
+/       .links
+/         a href="javascript:void(0)" onclick="print();return false;" id="print_page"
+/           = fa_icon 'print'
+/           = " Print"
+/         a href="javascript:void(0)" onclick="window.close();return false;" id="close_page"
+/           = " X Close"
+/     #pages
+/       = yield
+
+/   = javascript_include_tag 'print_report'

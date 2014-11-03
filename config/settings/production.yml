@@ -1,3 +1,10 @@
+app:
+  name: Approvals
+  scheme: https
+  host: apps.biola.edu
+  relative_url_root: /approvals
+  full_url: http://apps.biola.edu/approvals
+
 redis:
   url: "redis://redis1.prod.biola.edu:6379/0"
 

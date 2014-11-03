@@ -1,0 +1,6 @@
+secret_token: # run rake secret to generate this
+
+roz:
+  access_id: '*******************'
+  secret_key: '*******************'
+  files_base_url: 'http://roz.dev'

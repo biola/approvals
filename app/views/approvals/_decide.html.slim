@@ -1,0 +1,25 @@
+= form_for [@proposal, @approval] do |f|
+  .modal-header
+    button.close type="button" data-dismiss="modal" aria-hidden="true"  &times;
+    h4.modal-title Proposal Decision
+    label.text-muted Note: All decisions are final.
+
+  .modal-body
+    label Proposal:
+    blockquote
+      p = @proposal.title
+    .form-section
+      .btn-group.center data-toggle="buttons"
+        button.btn.btn-primary
+          => f.radio_button :approved, true
+          | Approve
+        button.btn.btn-default
+          => f.radio_button :approved, false
+          | Reject
+
+  .modal-footer
+    / button.btn.btn-default type="button" data-dismiss="modal" Cancel
+    = f.submit 'Submit', class: 'btn btn-primary'
+
+
+
