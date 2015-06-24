@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.7.1'
+gem 'rails', '4.1.11'
 
 gem 'biola_deploy'
 gem 'biola_frontend_toolkit'
@@ -20,7 +20,7 @@ gem 'pretender'
 gem 'pundit'
 gem 'rack-cas', '>= 0.9.2'
 gem 'rails_config'
-gem 'sass-rails', '~> 4.0.4'
+gem 'sass-rails', '~> 5.0.3'
 gem 'slim', '~> 2.0.3'
 gem 'therubyracer'
 gem 'turnout'
