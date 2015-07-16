@@ -21,10 +21,9 @@ email:
   smtp:
     server: postfix.biola.edu
 
-exceptions:
-  mail_to:
-  - appdev@biola.edu
-
 roz:
   access_id: # set in settings.local.yml
   secret_key: # set in settings.local.yml
+
+sentry:
+  url: # Set Sentry URL in settings.local.yml
