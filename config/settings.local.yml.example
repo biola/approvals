@@ -4,3 +4,6 @@ roz:
   access_id: '*******************'
   secret_key: '*******************'
   files_base_url: 'http://roz.dev'
+
+sentry:
+  url: # Set me!
